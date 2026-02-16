@@ -16,7 +16,7 @@ app.get('/', (req, res) => {
         headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/vnd.github+json',
-            'Authorization': process.env.github_token,
+            'Authorization': process.env.hub_token,
             'X-GitHub-Api-Version': '2022-11-28'
         }
     }).then(response => response.json()).then(data => {
