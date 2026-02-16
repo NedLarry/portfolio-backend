@@ -1,7 +1,11 @@
 require('dotenv').config();
 const express = require('express');
-
+const cors = require('cors');
 var app = express();
+
+app.use(cors({
+    origin: "*"
+}))
 
 var dataObject = [];
 
@@ -26,4 +30,4 @@ app.get('/', (req, res) => {
 
 })
 
-app.listen(3000, () => console.log("app is live"));
+app.listen(process.env.port || 3000, () => console.log("app is live"));
