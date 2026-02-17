@@ -30,4 +30,6 @@ app.get('/', (req, res) => {
 
 })
 
-app.listen(process.env.port || 3000, () => console.log("app is live"));
+module.exports = {app}
+
+//app.listen(process.env.port || 3000, () => console.log("app is live"));
