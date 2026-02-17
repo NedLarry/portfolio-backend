@@ -7,9 +7,10 @@ app.use(cors({
     origin: "*"
 }))
 
-var dataObject = [];
+
 
 function FormulateImgElement(pd) {
+    dataObject = [];
     dataObject.push({name: pd.name, html_url: pd.html_url, description: pd.description})
 }
    
@@ -24,7 +25,11 @@ app.get('/', (req, res) => {
             'X-GitHub-Api-Version': '2022-11-28'
         }
     }).then(response => response.json()).then(data => {
-        data.forEach(FormulateImgElement)
+        var dataObject = [];
+        for(let i = 0; i < data.length; i++){
+            if(data[i].id == '1012905963' || data[i].id == '1158540099' || data[i].id == '1159488241') continue;
+            dataObject.push({Id: data[i].id, name: data[i].name, html_url: data[i].html_url, description: data[i].description});
+        }
         res.send(dataObject);
     }).catch(error => console.error('Error:', error));
 
